@@ -235,9 +235,9 @@ func (ethash *Ethash) verifyHeader(chain consensus.ChainReader, header, parent *
 		}
 	}
 	// allow to commit block at one second
-	if header.Time.Cmp(parent.Time) < 0 {
-		return errZeroBlockTime
-	}
+	// if header.Time.Cmp(parent.Time) < 0 {
+	// 	return errZeroBlockTime
+	// }
 	// Verify the block's difficulty based in it's timestamp and parent's difficulty
 	expected := CalcDifficulty(chain.Config(), header.Time.Uint64(), parent)
 	if expected.Cmp(header.Difficulty) != 0 {
